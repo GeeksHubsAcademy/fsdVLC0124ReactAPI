@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { GetCharacters } from "./services/apiCalls";
-import "./App.css";
 import { Card } from "./common/Card/Card";
+import "./App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -28,9 +28,9 @@ function App() {
   return (
     <>
       {characters.length > 0 ? (
-        <div>{
+        <div className="cardsRoster">{
 
-          characters.map(
+          characters.slice(0,10).map(
             person => {
               return (
                 <Card 
