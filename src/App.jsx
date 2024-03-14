@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { GetCharacters } from "./services/apiCalls";
 import "./App.css";
+import { Card } from "./common/Card/Card";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -20,6 +21,10 @@ function App() {
     }
   }, [characters]);
 
+  const clickedCharacter = (person) => {
+    console.log(person)
+  }
+
   return (
     <>
       {characters.length > 0 ? (
@@ -28,7 +33,13 @@ function App() {
           characters.map(
             person => {
               return (
-                <div key={person.id}>{person.name}</div>
+                <Card 
+                  key={person.id}
+                  name={person.name}
+                  species={person.species}
+                  image={person.image}
+                  clickFunction={()=>clickedCharacter(person)}
+                />
               )
             }
           )
